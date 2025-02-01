@@ -9,7 +9,8 @@ const cookieParser = require('cookie-parser')
 
 const get_users = require('./routes/auth.route')
 const candidates = require("./routes/candidates.route")
-const vote = require('./routes/vote.route')
+const vote = require('./routes/vote.route');
+const update = require('./routes/update_data.route')
 
 
 const href = config.get('ENV') === 'production' ? config.get('prod-href') : config.get('dev-href') || 'http://localhost:3000';
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')))
 app.use('/api', get_users)
 app.use('/api', candidates)
 app.use('/api', vote)
+app.use('/api', update)
 
 app.use((req,res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'))

@@ -4,26 +4,17 @@ const User = require('../models/User.model')
 const config = require('config');
 const { validationResult } = require('express-validator')
 const nodemailer = require('nodemailer')
-
+const transporter = require('../services/transporter.service')
 const MailOptions = require('../services/send-mail.service')
-
-const my_email = config.get('my_email');
-const pass = config.get('pass');
+const createCode = require('../services/createCodeFn.service')
 
 let newUser;
 let token;
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.mail.ru',
-  port: 465,
-  secure: true,
-  auth: {
-    user: my_email,
-    pass: pass,
-  },
-});
-let code;
-code = Math.floor(Math.random() * 900000);
+const my_email = config.get('my_email')
+const code = createCode();
+
+
 
 class dataController {
   async login(req, res) {
@@ -71,7 +62,6 @@ class dataController {
   async register(req, res) {
     try {
       const { email, password } = req.body;
-
       //Валидация
       const errors = validationResult(req);
       if (!errors.isEmpty()) return res.status(400).json({ message: "Некорректно введённые данные" })
@@ -110,7 +100,6 @@ class dataController {
   async verify(req, res) {
     try {
       const { codeClient } = req.body;
-
       //Валидация
       const errors = validationResult(req);
       if (!errors.isEmpty()) return res.status(400).json({ message: "Некорректный код" })

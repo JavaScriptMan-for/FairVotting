@@ -1,6 +1,6 @@
 import { FC, FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setJwt, getUsername } from '../../store/slices/authSlice';
+import { setJwt, getUsername, setIsFagotStep, setIsRegOneStep } from '../../store/slices/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
 
 import RootState from "../types"
@@ -13,6 +13,7 @@ import { authFn } from '../methods/authFn';
 
 const Auth: FC = () => {
   const {_email, _password} = useSelector((state: RootState) => state.auth.data)
+  const fagot_step = useSelector((state: RootState) => state.auth.isFagotStep);
   const step = useSelector((state: RootState) => state.auth.isRegOneStep);
   const [isStep, setIsStep] = useState<boolean>(false)
   const dispatch = useDispatch();
@@ -33,7 +34,9 @@ const Auth: FC = () => {
 
   useEffect(()=> {
     step ? setIsStep(true) : setIsStep(false)
-  }, [step])
+    isStep && dispatch(setIsRegOneStep(false)) 
+    fagot_step && dispatch(setIsFagotStep(false)) 
+  }, [step, fagot_step])
 
   const validateEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -60,11 +63,10 @@ const Auth: FC = () => {
     switch(e.target.name) {
       case 'email': setEmailDirty(true); break;
       case 'password': setPasswordDirty(true); break;
-
     }
   }
 
-  const authMutation = useMutation({
+  const authMutation = useMutation({ 
     mutationFn: authFn,
     onSuccess: (data) => {
       setEmail('');
@@ -139,6 +141,7 @@ const Auth: FC = () => {
           <button disabled={!validateForm && !isStep} type='submit'>Войти</button>
         }
         <Link to="/register">Нет аккаунта? Зарегистрируйтесь.</Link>
+        <Link to="/fagot-password">Забыли пароль?</Link>
         {authMutation.isError && <p className='input-error' id='error'>{authMutation.error.message}</p>}
       </form>
     </div>

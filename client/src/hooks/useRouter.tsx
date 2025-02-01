@@ -12,17 +12,18 @@ import Register from "../pages/Register"
 import My_vote from "../pages/My_vote"
 import CountVote from "../pages/CountVotes"
 import Verify from "../pages/Verify"
-
+import FagotPassword from "../pages/FagotPassword"
+import FagotPasswordEmail from "../pages/FagotPasswordEmail"
 
 
 
 export const useRoutes = () => {
-    const {spamLocalstorage, spamCookies} = useSpam()
+    const { spamLocalstorage, spamCookies } = useSpam()
     const jwt = useSelector((state: RootState) => state.auth.jwt)
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    let isAuth: boolean = useSelector((state:RootState) => state.auth.isAuth);
+    let isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth);
     useEffect(() => {
         spamLocalstorage();
         spamCookies()
@@ -30,22 +31,37 @@ export const useRoutes = () => {
         !Cookies.get('token') && dispatch(setIsAuth(false))
         jwt === null && dispatch(setJwt(Cookies.get('token')));
         jwt === undefined && dispatch(setIsAuth(false))
-              
+
         isAuth = !!jwt
 
-        if (isAuth && location.pathname !== '/' && location.pathname !== '/my_vote' && location.pathname !== '/count-votes') {
+        if (
+            isAuth &&
+            location.pathname !== '/' &&
+            location.pathname !== '/my_vote' &&
+            location.pathname !== '/count-votes'
+        ) {
             navigate('/');
         }
-        if (!isAuth && location.pathname !== '/auth' && location.pathname !== '/register' && location.pathname !== '/verify') {
+        if (
+            !isAuth &&
+            location.pathname !== '/auth' &&
+            location.pathname !== '/register' &&
+            location.pathname !== '/verify' &&
+            location.pathname !== '/fagot-password' &&
+            location.pathname !== '/verify-put'
+        ) {
             navigate('/auth');
         }
- 
-        switch(location.pathname) {
+
+        switch (location.pathname) {
             case '/': document.title = "Голосование"; break;
             case '/my_vote': document.title = "Мой голос"; break;
+            case "/count-votes": document.title = "Подсчёт голосов"; break;
             case "/auth": document.title = "Авторизация"; break;
             case "/register": document.title = "Регистрация"; break;
-            case "/count-votes": document.title = "Подсчёт голосов"; break;
+            case "/verify": document.title = "Подтверждение"; break;
+            case "/fagot-password": document.title = "Забыли пароль?"; break;
+            case "/verify-put": document.title = "Забыли пароль?"; break;
             default: "Голосование"
         }
     }, [location, navigate]);
@@ -54,10 +70,12 @@ export const useRoutes = () => {
         <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/my_vote" element={<My_vote />} />
-            <Route path="/count-votes" element={<CountVote />}/>
+            <Route path="/count-votes" element={<CountVote />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/verify" element={<Verify />}/>
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/fagot-password" element={<FagotPasswordEmail />} />
+            <Route path="/verify-put" element={<FagotPassword />} />
         </Routes>
     );
 }

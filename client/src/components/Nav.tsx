@@ -1,18 +1,14 @@
-import { FC, useEffect, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const Nav:FC = () => {
   const location = useLocation();
 
   const getLinkStyle = useMemo(() => (path: string) => {
-    return location.pathname === path ? { borderBottom: '2px solid rgb(53, 185, 255)' } : {};
+    return location.pathname === path ? { borderBottom: '2px solid purple' } : {};
   }, [location.pathname]);
 
-  useEffect(()=> {
-    switch (location.pathname) {
-      
-  }
-  }, [location])
+
   return (
     <nav>
         <NavLink style={getLinkStyle('/')} to="/">Голосование</NavLink>

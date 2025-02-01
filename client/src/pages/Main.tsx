@@ -1,5 +1,6 @@
 import '../css/client.scss';
 import { FC, useEffect, useState, useRef } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { getData, getUsername, setIsAuth } from '../../store/slices/authSlice';
 import { setVoteId, setError, setYourVoteId } from '../../store/slices/reactSlice';
@@ -14,6 +15,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 
 const Main: FC = () => {
+  const [cookie_success, setCookieSuccess] = useState<string | undefined>('false');
   const dispatch = useDispatch()
   const errorRef = useRef<HTMLParagraphElement>(null);
   const succRef = useRef<HTMLParagraphElement>(null)
@@ -62,6 +64,7 @@ const voteFn = async (dataVote: IVote): Promise<VotePercentages> => {
     mutationFn: voteFn,
     onSuccess: () => {
       setSuccess(true)
+      Cookies.get('success') && setCookieSuccess(Cookies.get('success'))
       succRef && succRef.current && succRef.current?.scrollIntoView({ behavior: 'smooth' });
       dispatch(setYourVoteId(selectedCandidateId))
       Cookies.set('success', 'true')
@@ -105,15 +108,15 @@ const voteFn = async (dataVote: IVote): Promise<VotePercentages> => {
     }
   }, [success]);
   return (
-    <>
+    <div id='main'>
       <Menu />
 
       <Candidates />
 
-      <button disabled={!selectedCandidateId || !username || username.length < 6 || mutationVote.isPending || !Boolean(Cookies.get('success'))} onClick={() => handleVoteClick()}>Проголосовать</button>
+      <button id='vote_butt' disabled={!selectedCandidateId || !username || username.length < 6 || mutationVote.isPending || !Boolean(cookie_success)} onClick={() => handleVoteClick()}>Проголосовать</button>
       {mutationVote.isError && <p ref={errorRef} id='error'>{mutationVote.error.message}</p>}
       {success && <p ref={succRef} id='succ'>Вы успешно проголосовали!</p>}
-    </>
+    </div>
   );
 };
 

@@ -3,6 +3,9 @@ class candidateFunct {
         const candidates = [
              {
                 id: 1,
+                name: "Владимир",
+                patronymic: "Владимирович",
+                surname: "Путин",
                 president: "Владимир Владимирович Путин",
                 party: "Единая Россия",
                 description: `
@@ -15,6 +18,9 @@ class candidateFunct {
             },
              {
                 id: 2,
+                name: "Владимир",
+                patronymic: "Вольфович",
+                surname: "Жириновский",
                 president: "Владимир Вольфович Жириновский",
                 party: "ЛДПР",
                 description: `
@@ -26,6 +32,9 @@ class candidateFunct {
             },
              {
                 id: 3,
+                name: "Алесей",
+                patronymic: "Анатольевич",
+                surname: "Навальный",
                 president: "Алексей Анатольевич Навальный",
                 party: "Россия Будущего",
                 description: `
@@ -36,6 +45,9 @@ class candidateFunct {
             },
              {
                 id: 4,
+                name: "Геннадий",
+                patronymic: "Андреевич",
+                surname: "Зюганов",
                 president: "Геннадий Андреевич Зюганов",
                 party: "КПРФ",
                 description: `
@@ -46,6 +58,9 @@ class candidateFunct {
             },
              {
                 id: 5,
+                name: "Григорий",
+                patronymic: "Алексеевич",
+                surname: "Явлинский",
                 president: "Григорий Алексеевич Явлинский",
                 party: "Яблоко",
                 description: `
@@ -57,6 +72,9 @@ class candidateFunct {
             },
              {
                 id: 6,
+                name: "Сергей",
+                patronymic: "Михайлович",
+                surname: "Миронов",
                 president: "Сергей Михайлович Миронов",
                 party: "Справедливая Россия",
                 description: `
@@ -66,6 +84,9 @@ class candidateFunct {
             },
              {
                 id: 7,
+                name: "Борис",
+                patronymic: "Борисович",
+                surname: "Надеждин",
                 president: "Борис Борисович Надеждин",
                 party: "Гражданская инициатива",
                 description: `
@@ -75,6 +96,9 @@ class candidateFunct {
             },
              {
                 id: 8,
+                name: "Вечеслав",
+                patronymic: "Андреевич",
+                surname: "Даванков",
                 president: "Владислав Андреевич Даванков",
                 party: "Новые люди",
                 description: `

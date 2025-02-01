@@ -56,7 +56,7 @@ const {data, isLoading, isError, error} = useQuery({
     <>
         <Menu />
         <div id="count-candidates">
-            <h1>Подсчёт голосов:</h1>
+            <h1 style={{marginBottom: `${20}px`}}>Подсчёт голосов:</h1>
         {data &&
                 candidates &&
                     !isLoading && 
@@ -67,9 +67,9 @@ const {data, isLoading, isError, error} = useQuery({
                             (cand) => cand.id === Number(candidateId)
                         );
                         return (
-                            <div className="count_candidates" key={candidateId}>
-                                 <p>{candidate?.president || `Неизвестный кандидат`}:{' '}</p>  <p>{percentage}%</p>
-                            </div>
+                            <table className="count_candidates" key={candidateId}>
+                                 <tr><td><p>{candidate?.president || `Неизвестный кандидат`}:{' '}</p></td><td><p>{percentage}%</p></td></tr>  
+                            </table>
                         );
                     }
                 )}

@@ -7,9 +7,10 @@ export interface AuthState {
         _email: string;
         _password: string;
     },
-    username: null | string | undefined,
-    isAuth: boolean,
-    isRegOneStep: boolean
+    username: null | string | undefined;
+    isAuth: boolean;
+    isRegOneStep: boolean;
+    isFagotStep: boolean;
 }
 const authSlice = createSlice({
   name: 'auth',
@@ -22,6 +23,7 @@ const authSlice = createSlice({
     username: null,
     isAuth: false,
     isRegOneStep: false,
+    isFagotStep: false
   } as AuthState ,
   reducers: {
     setJwt(state, action: PayloadAction<string | null | undefined>) {
@@ -40,9 +42,11 @@ const authSlice = createSlice({
     setIsRegOneStep (state, action: PayloadAction<boolean>) {
       state.isRegOneStep = action.payload
     },
-
+    setIsFagotStep (state, action: PayloadAction<boolean>) {
+      state.isFagotStep = action.payload
+    }
   },
 });
 
-export const { setJwt, getData, getUsername, setIsAuth, setIsRegOneStep } = authSlice.actions;
+export const { setJwt, getData, getUsername, setIsAuth, setIsRegOneStep, setIsFagotStep } = authSlice.actions;
 export default authSlice.reducer;
