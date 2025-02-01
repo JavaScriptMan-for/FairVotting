@@ -14,11 +14,11 @@ const My_vote:FC = () => {
     switch(Number(localStorage.getItem('n'))) {
       case 1: setYour_vote("Владимир Владимирович Путин"); break;
       case 2: setYour_vote("Владимир Вольфович Жириновский"); break;
-      case 3: setYour_vote("Алексей Анатольевич Навальный"); break;
+      case 3: setYour_vote("Алексей Анатольевич Овальный"); break;
       case 4: setYour_vote("Геннадий Андреевич Зюганов"); break;
-      case 5: setYour_vote("Григорий Алексеевич Явлинский"); break;
+      case 5: setYour_vote("Григорий Алексеевич Яблинский"); break;
       case 6: setYour_vote("Сергей Михайлович Миронов"); break;
-      case 7: setYour_vote("Борис Борисович Надеждин"); break;
+      case 7: setYour_vote("Борис Борисович Надеждов"); break;
       case 8: setYour_vote("Владислав Андреевич Даванков"); break;
       default: setYour_vote("Вы не проголосовали");
     }
