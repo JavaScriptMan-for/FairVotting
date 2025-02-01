@@ -1,0 +1,75 @@
+@media screen and (max-width: 910px) {
+   .candidate {
+
+    input[type=radio] {
+        margin-left: 70%;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    p {
+        font-size: 15px;
+    }
+}
+}
+@media screen and (max-width: 600px) {
+    .candidate {
+        input[type=radio] {
+            margin-left: 60%;
+        }
+        .fullname {
+            display: inline-block;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+    }
+}
+@media screen and (max-width: 410px) {
+    .candidate {
+        input[type=radio] {
+            margin-left: 50%;
+        }
+    }
+}
+@media screen and (max-width: 360px) {
+    .candidate {
+        input[type=radio] {
+            margin-left: 40%;
+        }
+    }
+}
+@media screen and (max-width: 330px) {
+   #root, html, body {
+    overflow: scroll;
+    margin-left: 30px;
+   }
+   button {
+    width: 150px;
+    font-size: 15px;
+   }
+}
+@media screen and (max-width: 300px) {
+    menu {
+        margin-left: 40px;
+    }
+    .candidate {
+        input[type=radio] {
+            margin-left: -20%;
+        }
+        h1 {
+            margin-left: 40px;
+        }
+        h2 {
+            margin-left: 40px;
+        }
+        p {
+            margin-left: 40px;
+        }
+    }
+    button {
+        margin-left: 40px;
+    }
+}

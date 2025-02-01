@@ -5,11 +5,6 @@ export default interface RootState {
     reactRed: ReactState;
     auth: AuthState,
   }
-  export interface ToDo {
-    id: string;
-    completed: boolean;
-    text: string
-  }
   
 export interface ReactState {
     error: string | null
@@ -19,6 +14,9 @@ export interface ReactState {
 }
 export interface IPresident {
   id: number,
+  name: string;
+  surname: string;
+  patronymic: string;
   president: string;
   party: string;
   description: string;
@@ -60,4 +58,18 @@ export interface VotePercentages {
 export interface SecretData {
   message: string,
   user_email: string
+}
+export interface WindowSize {
+  width: number;
+  height: number;
+}
+export interface PutData {
+  message: string
+}
+export interface FagotAuth {
+  newPassword: string;
+  verify_password_code: string;
+}
+export interface Email {
+  email: string;
 }
