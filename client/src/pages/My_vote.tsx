@@ -30,7 +30,7 @@ const My_vote:FC = () => {
     <div id='my_vote'>
     <h1>Ваш голос:</h1>
     {
-    !!localStorage.getItem('n') ? <p>{your_vote}</p> : <p>Вы ещё не проголосовали</p>
+    !!localStorage.getItem('n') ? <p id='vote-paragraph'>{your_vote}</p> : <p>Вы ещё не проголосовали</p>
      }
 
     </div> 

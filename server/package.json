@@ -5,21 +5,19 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js --verbose",
-    "production": "node server.js",
     "client": "npm run dev --prefix ../client",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "deploy": "pm2 startOrRestart ecosystem.config.js --env production"
+    "production": "pm2 startOrRestart ecosystem.config.js --env production",
+    "stop": "pm2 delete server"
   },
   "author": "Ivan",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.3",
     "concurrently": "^9.1.2",
     "config": "^3.3.12",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
     "express": "^4.21.2",
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",

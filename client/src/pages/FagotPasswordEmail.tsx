@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { FC, FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Email, PutData } from '../types';
 import { useDispatch } from 'react-redux';
 import { setIsFagotStep } from '../../store/slices/authSlice';
@@ -70,6 +70,7 @@ const FagotPasswordEmail: FC = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChangeEmail(e)}
                 />
                 <button disabled={validateForm} type='submit'>Отправить письмо</button>
+                <Link to="#" onClick={() => navigate(-1)}>Назад</Link>
                 {mutation.isPending && <p>Загрузка...</p>}
                 {mutation.isError && <p id='error'>{mutation.error.message}</p>}
                 {!mutation.isError && !mutation.isPending && isSuccess && <p id='succ'>Правильный код</p>}

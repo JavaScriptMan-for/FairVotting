@@ -24,6 +24,16 @@
       font-size: 20px;
       font-family: 'Open-Sans', sans-serif; 
   }
+  table {
+    border-top: 2px solid purple;
+    border-bottom: 2px solid purple;
+    padding: 20px;
+  }
+  #vote-paragraph {
+    font-size: 30px;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+  }
 #out {
     @include Out()
 }

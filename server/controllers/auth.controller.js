@@ -12,8 +12,9 @@ let newUser;
 let token;
 
 const my_email = config.get('my_email')
-
 const code = createCode();
+
+
 
 class dataController {
   async login(req, res) {
@@ -61,7 +62,6 @@ class dataController {
   async register(req, res) {
     try {
       const { email, password } = req.body;
-
       //Валидация
       const errors = validationResult(req);
       if (!errors.isEmpty()) return res.status(400).json({ message: "Некорректно введённые данные" })

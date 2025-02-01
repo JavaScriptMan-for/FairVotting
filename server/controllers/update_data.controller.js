@@ -13,7 +13,7 @@ const code = createCode();
 class UpdateData {
     async sendMail (req,res) {
         try {
-     const {email} = req.body;
+            const {email} = req.body;
      
      const errors = validationResult(req);
      if(!errors.isEmpty()) return res.status(400).json({message: "Некорректный email"})
@@ -47,7 +47,10 @@ class UpdateData {
             if(!email_) return res.status(400).json({message: "Ошибка при получении email"})
 
             const findAccount = await User.findOne({ email: email_ })
-            if (!findAccount) return res.status(400).json({ message: "Вы не зарегистрированы" })
+            if (!findAccount) return res.status(400).json({ message: "Вы не зарегистрированы" });
+
+             const isMatch = await bcrypt.compare(newPassword, findAccount.password)
+             if (isMatch) return res.status(400).json({ message: "Ваш пароль итак такой" })
             
             if(Number(verify_password_code) !== Number(code)) return res.status(400).json({message: "Неверный код"})
 

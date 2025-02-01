@@ -60,6 +60,8 @@ export const useRoutes = () => {
             case "/auth": document.title = "Авторизация"; break;
             case "/register": document.title = "Регистрация"; break;
             case "/verify": document.title = "Подтверждение"; break;
+            case "/fagot-password": document.title = "Забыли пароль?"; break;
+            case "/verify-put": document.title = "Забыли пароль?"; break;
             default: "Голосование"
         }
     }, [location, navigate]);
